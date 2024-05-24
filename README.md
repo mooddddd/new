@@ -31,3 +31,11 @@ npm run next start => 서비스 시작됨
 <img src='hello.png' />
 // 이런 식으로 바로 경로 써주면 됨
 ```
+
+4. json-server 사용하여 백앤드 구축하기
+
+```
+npx json-server@0.17.4 --port 9999 --watch db.json
+  > port 9999로 서버 열고, db.json 파일 변경되면 바로 재시동 될 수 있게 --watch 붙여줌
+  (버전 이슈로 인해 @로 버전 지정해줌)
+```
