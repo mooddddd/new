@@ -1,30 +1,44 @@
+'use client';
+
 import type { Metadata } from 'next';
 import './globals.css';
+import { useEffect, useState } from 'react';
+import Link from 'next/link';
 
-export const metadata: Metadata = {
-  title: '연습용',
-  description: '넥스트 감잡아봐용',
-};
+// export const metadata: Metadata = {
+//   title: '연습용',
+//   description: '넥스트 감잡아봐용',
+// };
 
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const [topics, setTopics] = useState([]);
+  useEffect(() => {
+    fetch('http://localhost:9999/topics')
+      .then((res) => res.json())
+      .then((result) => {
+        setTopics(result);
+      });
+  }, []);
+
+  const menu = topics.map((topic: any) => {
+    return (
+      <li key={topic.id}>
+        <Link href={`/read/${topic.id}`}>{topic.title}</Link>
+      </li>
+    );
+  });
+
   return (
     <html>
       <body>
         <h1>
-          <a href='/'>web</a>
+          <Link href='/'>web</Link>
         </h1>
-        <ol>
-          <li>
-            <a href='/read/1'>html</a>
-          </li>
-          <li>
-            <a href='/read/2'>css</a>
-          </li>
-        </ol>
+        <ol>{menu}</ol>
         {children}
         <ul>
           <li>
