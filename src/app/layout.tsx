@@ -1,8 +1,5 @@
-'use client';
-
 import type { Metadata } from 'next';
 import './globals.css';
-import { useEffect, useState } from 'react';
 import Link from 'next/link';
 
 // export const metadata: Metadata = {
@@ -10,19 +7,14 @@ import Link from 'next/link';
 //   description: '넥스트 감잡아봐용',
 // };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const [topics, setTopics] = useState([]);
-  useEffect(() => {
-    fetch('http://localhost:9999/topics')
-      .then((res) => res.json())
-      .then((result) => {
-        setTopics(result);
-      });
-  }, []);
+  const res = await fetch('http://localhost:9999/topics');
+  const topics = await res.json();
+  // 이렇게 바꿈으로써 서버쪽에서 동적으로 생성한 정적인 내용을 클라이언트에게 전달할 수 있음! 용량이 매우 절약됨
 
   const menu = topics.map((topic: any) => {
     return (
