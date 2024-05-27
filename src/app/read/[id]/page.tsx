@@ -2,7 +2,9 @@
 // 여기서 id는 내가 디렉터리명을 id로 설정해서임
 
 const Read = async (props: any) => {
-  const res = await fetch(`http://localhost:9999/topics/${props.params.id}`);
+  const res = await fetch(`http://localhost:9999/topics/${props.params.id}`, {
+    cache: 'no-store',
+  });
   const topic = await res.json();
   return (
     <>
