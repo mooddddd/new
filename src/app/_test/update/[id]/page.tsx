@@ -40,8 +40,8 @@ export const Update = () => {
           .then((res) => res.json())
           .then((result) => {
             const lastId = result.id;
-            router.refresh();
             router.push(`/read/${lastId}`);
+            router.refresh();
           });
       }}
     >
