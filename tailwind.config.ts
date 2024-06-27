@@ -19,6 +19,10 @@ const config: Config = {
           500: '#6e38f7',
         },
       },
+      fontFamily: {
+        sans: ['var(--font-inter)'],
+        mono: ['var(--font-roboto-mono)'],
+      },
     },
   },
   plugins: [],
