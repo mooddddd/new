@@ -14,7 +14,7 @@ export const MovedItem = () => {
   });
 
   return (
-    <div className='flex w-3/6 justify-evenly h-screen'>
+    <div className='flex w-3/6 justify-evenly bg-white h-full'>
       <div className='left w-2/5'>{oddNumver}</div>
       <div className='right w-2/5'>{evenNumver}</div>
     </div>
